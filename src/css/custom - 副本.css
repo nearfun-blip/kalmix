@@ -1,0 +1,61 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* 三栏布局：左侧边栏 + 主内容 + 右侧 TOC */
+@media (min-width: 997px) {
+  .main-wrapper {
+    display: grid;
+    grid-template-columns: 240px 1fr 240px; /* 左侧菜单 | 主内容 | 右侧 TOC */
+    gap: 24px;
+    max-width: none;
+    padding: 0 24px;
+  }
+
+  .sidebar {
+    grid-column: 1;
+    position: sticky;
+    top: var(--ifm-navbar-height);
+    height: calc(100vh - var(--ifm-navbar-height));
+    overflow-y: auto;
+  }
+
+  main {
+    grid-column: 2;
+  }
+
+  .table-of-contents {
+    grid-column: 3;
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + 16px);
+    max-height: calc(100vh - var(--ifm-navbar-height) - 32px);
+    overflow-y: auto;
+  }
+}
