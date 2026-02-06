@@ -1,9 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy Docusaurus Site
 
 on:
   push:
-    branches: [source]  # 注意：您的默认分支是 main
-  workflow_dispatch:
+    branches: [source]
 
 permissions:
   contents: read
@@ -11,35 +10,23 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Build
-        run: npm run build
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          node-version: 18
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./build  # 确保路径正确
 
   deploy:
     environment:
@@ -51,3 +38,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # 关键：指定发布目录
+          publish_dir: ./build
