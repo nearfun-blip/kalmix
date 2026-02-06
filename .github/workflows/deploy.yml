@@ -1,3 +1,4 @@
+# .github/workflows/deploy.yml
 name: Deploy Docusaurus Site
 
 on:
@@ -5,9 +6,9 @@ on:
     branches: [source]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write  #  关键：允许写入代码（推送 main 分支）
+  pages: write     # 允许部署 Pages
+  id-token: write  # 允许认证
 
 concurrency:
   group: pages
@@ -26,7 +27,7 @@ jobs:
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build  # 确保路径正确
+          path: ./build
 
   deploy:
     environment:
@@ -38,6 +39,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # 关键：指定发布目录
-          publish_dir: ./build
