@@ -1,0 +1,362 @@
+ 
+
+# GNSS Module
+
+The KalMix Scout Pro features a built-in **K35** series high-precision positioning module, enabling RTK centimeter-level positioning and RTK+DR fusion inertial navigation capabilities. The K35 series is a GNSS module developed based on the **MTK3335AT** chipset, offering extensive application versatility.
+
+
+
+## Overview
+
+The K35 series modules include K35C and K35E - high-precision, high-performance L1/L5 dual-frequency GNSS positioning modules. These modules simultaneously support GPS, BDS, GLONASS, Galileo, and QZSS satellite positioning systems with AGNSS functionality. They integrate a high-performance, highly reliable positioning engine for fast and accurate GNSS positioning.
+
+
+
+### Product Variants
+
+**K35C** - Dual-frequency RTK differential positioning with centimeter-level accuracy.
+
+**K35E** - Integrates 6-axis IMU for dual-frequency RTK differential and INS fusion positioning. 
+
+![K35](/img/hardware/k35/k35_module.png)
+
+
+
+:::info Algorithm customization
+
+Based on the various positioning devices integrated with K35 series modules, we offer customized GNSS algorithm services tailored to different scenarios and applications. The K35 series, developed on the MTK3335AT chipset, supports multiple satellite systems including GPS, BDS, GLONASS, Galileo, and QZSS, with capabilities ranging from dual-band single-point positioning to RTK centimeter-level accuracy and RTK+DR fusion inertial navigation. Whether for shared mobility, automotive ADAS, UAV operations, fleet management, or robotics applications, we can provide optimized algorithm solutions to meet your specific requirements. Please contact us for more information.
+
+:::
+
+## Key Features
+
+### Satellite System Support
+
+**L1 Band**
+
+- GPS, GLONASS, Galileo, BDS, QZSS systems
+
+**L5 Band**
+
+- GPS, Galileo, BDS, QZSS systems
+
+
+
+### Core Features
+
+- **SBAS Support**: WAAS, EGNOS, MSAS, GAGAN  
+- **RTCM v3.x**: Protocol support with customization options  
+- **NMEA0183**: Standard communication protocol  
+- **AGPS**: EPO, EASY, NVRAM, Hot Still  
+- **Fast TTFF**: Cold start < 28 s (24 s with GLONASS); Hot start < 1 s  
+- **Weak Signal Performance**: Excellent positioning accuracy and availability  
+- **Compliance**: RoHS, FCC, CE certified
+
+
+
+## Advanced Features
+
+### AGNSS Support (EPO™)
+
+AGNSS (EPO™) provides predicted extended orbit data to accelerate TTFF. Users can download data from FTP servers via internet or wireless networks. When satellite navigation information is insufficient or in weak signal areas, the GNSS engine uses EPO data to assist position calculation.
+
+
+
+### EASY™
+
+EASY™ is an embedded auxiliary system for fast positioning. Upon power-up, the GNSS engine automatically calculates and predicts environments (up to 3 days) and saves prediction information to memory. If satellite information is insufficient, the GNSS engine uses this data for positioning, improving performance in indoor or urban conditions. Backup power (VBACKUP) is required.
+
+
+
+### RTK (Real-time Kinematic)
+
+K35C and K35E support RTK functionality. The module receives RTK correction information via UART interface, which can be transmitted using cellular modules or other terrestrial network technologies.
+
+When receiving RTCM data stream:
+1. Module enters **RTK Float mode**
+2. Once carrier phase ambiguity is determined, enters **RTK Fixed mode**
+3. Achieves **centimeter-level high-precision positioning**
+
+:::info Convergence Time
+Typically within 60 seconds, the mobile station can determine carrier ambiguity and switch from RTK float mode to RTK fixed mode.
+:::
+
+
+
+### DR (Dead Reckoning)
+
+K35E modules support DR functionality, combining:
+- Satellite navigation data
+- Gyroscope and accelerometer data
+
+This enables continuous, high-precision positioning in weak signal environments (tunnels, urban canyons) even when vehicle status changes or satellite signals are partially/completely blocked.
+
+
+
+### AIC (Multi-tone Active Interference Canceller)
+
+Multi-tone active interference cancellation suppresses external RF interference from other active components (Wi-Fi, GSM/GPRS, 3G/4G, Bluetooth) on the mainboard, improving GNSS signal reception without hardware changes. K35 series can cancel up to 12 independent channel interference continuous waves.
+
+
+
+## Technical Specifications
+
+### Physical Characteristics
+
+| Parameter             | Specification                               |
+| --------------------- | ------------------------------------------- |
+| Dimensions            | (12.2±0.15)mm × (16.3±0.3)mm × (2.4±0.20)mm |
+| Weight                | Approx. 0.9g                                |
+| Operating Temperature | -40°C to +85°C                              |
+| Storage Temperature   | -40°C to +90°C                              |
+| Humidity              | ≤95%                                        |
+
+
+
+### Electrical Characteristics
+
+#### Absolute Maximum Ratings
+
+| Parameter           | Symbol | Min  | Max   | Unit |
+| ------------------- | ------ | ---- | ----- | ---- |
+| Supply Voltage      | VCC    | -0.3 | 3.6   | V    |
+| I/O Characteristics | VIO    | -0.3 | 3.6   | V    |
+| RF Input Power      | RF_IN  | -    | 0     | dBm  |
+| ESD Protection      | RF_IN  | -    | 2,000 | V    |
+| Storage Temperature | Tstg   | -40  | +85   | °C   |
+| Storage Humidity    | -      | -    | 95    | %    |
+
+#### Electrical Parameters
+
+| Parameter             | Symbol | Condition | Min  | Typical | Max  | Unit |
+| --------------------- | ------ | --------- | ---- | ------- | ---- | ---- |
+| Supply Voltage        | VCC    | -         | 3.0  | 3.3     | 3.6  | V    |
+| Backup Voltage        | V_BCKP | -         | 2.2  | 3.3     | 3.6  | V    |
+| Input High Voltage    | VIH    | -         | 2.4  | -       | 3.1  | V    |
+| Input Low Voltage     | VIL    | -         | 0    | -       | 0.6  | V    |
+| Output High Voltage   | VOH    | Ioh=4mA   | 2.8  | -       | -    | V    |
+| Output Low Voltage    | VOL    | Iol=4mA   | -    | -       | 0.4  | V    |
+| Operating Temperature | Topr   | -         | -40  | -       | 85   | °C   |
+
+:::warning Power Consumption Note
+Products with DR or RTK functionality have complex combined navigation algorithms, resulting in higher power consumption than standard modules. Reserve sufficient power in hardware design - **current no less than 150mA**.
+:::
+
+:::caution V_BCKP Precautions
+- V_BCKP voltage must not be lower than minimum recommended operating voltage
+- In Continuous mode, V_BCKP maximum current is 100μA, which gradually depletes the battery - non-rechargeable batteries not recommended
+- Select appropriate resistance based on battery charging current
+- Recommend controlling V_BCKP via MCU to restart module if it enters abnormal state
+:::
+
+
+
+## Performance Specifications
+
+### Power Consumption (GPS+GLONASS+Galileo+BDS+QZSS)
+
+| Mode        | K35C | K35E |
+| ----------- | ---- | ---- |
+| Acquisition | 25mA | 30mA |
+| Tracking    | 25mA | 30mA |
+| Backup Mode | 25μA | 25μA |
+
+
+
+### Sensitivity
+
+| Type          | K35C/E  |
+| ------------- | ------- |
+| Acquisition   | -145dBm |
+| Reacquisition | -157dBm |
+| Tracking      | -165dBm |
+
+
+
+### Time To First Fix (TTFF)
+
+#### AGNSS OFF
+| Mode                | Time |
+| ------------------- | ---- |
+| Complete Cold Start | 26s  |
+| Warm Start          | 16s  |
+| Hot Start           | 1s   |
+
+#### EASY Enabled
+| Mode                | Time |
+| ------------------- | ---- |
+| Complete Cold Start | 16s  |
+| Warm Start          | 2s   |
+| Hot Start           | 1s   |
+
+#### EPO Enabled
+| Mode                | Time |
+| ------------------- | ---- |
+| Complete Cold Start | 5s   |
+| Warm Start          | 3s   |
+| Hot Start           | 1s   |
+
+
+
+### Positioning Accuracy
+
+| Type                | Single Point | Differential |
+| ------------------- | ------------ | ------------ |
+| Horizontal Accuracy | ≤1m          | ≤10cm        |
+| Velocity Accuracy   | 0.2m/s       | 0.03m/s      |
+
+
+
+### Update Rate
+
+| Model | Update Rate |
+| ----- | ----------- |
+| K35C  | 1 Hz        |
+| K35E  | 10 Hz       |
+
+
+
+### Other Performance
+
+- **1PPS Accuracy**: 20ns
+
+- **Maximum Altitude**: 10,000m
+
+- **Maximum Velocity**: 500m/s
+
+- **Maximum Acceleration**: 4g
+
+  
+
+## Constellation Support Matrix
+
+| System      | Band  | K35C | K35E |
+| ----------- | ----- | ---- | ---- |
+| **GPS**     | L1C/A | ●    | ●    |
+|             | L5    | ●    | ●    |
+| **GLONASS** | L1    | ●    | ●    |
+| **Galileo** | E1    | ●    | ●    |
+|             | E5a   | ●    | ●    |
+| **BDS**     | B1I   | ●    | ●    |
+|             | B2a   | ●    | ●    |
+| **QZSS**    | L1C/A | ●    | ●    |
+|             | L5    | ●    | ●    |
+| **SBAS**    | L1    | ●    | ●    |
+
+
+
+## Interface & Communication
+
+### UART
+
+The K35 module provides three serial ports:
+- **UART0** - Main serial port for receiving differential information and outputting positioning results
+- Supports data transmission and firmware upgrade
+- **Signal Type**: LVTTL level
+- **Default Baud Rate**: 115,200bps
+- **Maximum**: 921,600bps (user configurable)
+
+### Communication Frequency
+
+System supports output data refresh rates:
+- **1 Hz** (default)
+- **10 Hz** (K35E support)
+
+### Communication Protocol
+
+K35 modules output standard NMEA0183 protocol:
+- GPGGA
+- GPRMC
+- GPGSV
+- GPGSA
+
+### Control Commands
+
+K35 system supports control commands via serial port. However, **K35 cannot save settings** - each power-up uses default output configuration.
+
+### PPS (Pulse Per Second)
+
+K35 provides highly accurate time pulse PPS signal:
+- Provides timing function for external systems
+
+- Adjustable pulse width
+
+- **Accuracy**: 20ns per 24h
+
+- **Default**: One pulse per second output
+
+  
+
+## Pin Configuration
+
+![K35](/img/hardware/k35/k35_pinout.png)
+
+### Pin Description
+
+| Pin  | Name      | I/O  | Description                                                  | Voltage (±5%) |
+| ---- | --------- | ---- | ------------------------------------------------------------ | ------------- |
+| 1    | RTC_EINT  | I    | External interrupt; >10ms high level exits RTC mode (float if unused) | +3.3V         |
+| 2    | NC        | -    | Not connected                                                | -             |
+| 3    | PPS       | O    | PPS second pulse signal output                               | +2.8V         |
+| 4    | SPEED     | I    | INS vehicle speed pulse input (float if unused)              | +2.8V         |
+| 5    | NC        | -    | Not connected                                                | -             |
+| 6    | NC        | -    | Not connected                                                | -             |
+| 7    | EINT_IN   | I    | Sleep mode wake up                                           | +1.8V         |
+| 8    | CHIP_EN   | I    | Module reset, active low                                     | +3.3V         |
+| 9    | ANT_POWER | O    | Active antenna power supply output                           | +3.3V         |
+| 10   | GND       | G    | Ground                                                       | GND           |
+| 11   | RF_IN     | I    | GNSS antenna signal input, 50Ω impedance                     | -             |
+| 12   | GND       | G    | Ground                                                       | GND           |
+| 13   | GND       | G    | Ground                                                       | GND           |
+| 14   | EINT_OUT  | O    | External HOST enable output                                  | +1.8V         |
+| 15   | FWD       | I    | Speed pulse forward/backward input (float if unused)         | +2.8V         |
+| 16   | UART2_TX  | O    | UART2 transmit                                               | +2.8V         |
+| 17   | UART2_RX  | I    | UART2 receive                                                | +2.8V         |
+| 18   | TXD1/SDA  | O    | Default UART1 transmit, I2C serial data multiplexed          | +2.8V         |
+| 19   | RXD1/SCL  | I    | Default UART1 receive, I2C serial clock multiplexed          | +2.8V         |
+| 20   | UART0_TX  | O    | UART0 transmit (main serial port)                            | +2.8V         |
+| 21   | UART0_RX  | I    | UART0 receive (main serial port)                             | +2.8V         |
+| 22   | V_BCKP    | P    | Backup battery: 2.2V-3.6V                                    | 2.2V-3.6V     |
+| 23   | VCC       | P    | Main power supply: 3.0-3.6V                                  | 3.0-3.6V      |
+| 24   | GND       | G    | Ground                                                       | GND           |
+
+
+
+## Mechanical Dimensions
+
+![K35](/img/hardware/k35/k35_dimensions.png)
+
+| Dimension | Min (mm) | Typical (mm) | Max (mm) |
+| --------- | -------- | ------------ | -------- |
+| A         | 16.0     | 16.3         | 16.6     |
+| B         | 12.05    | 12.2         | 12.35    |
+| C         | 2.2      | 2.4          | 2.6      |
+| D         | 0.9      | 1.0          | 1.3      |
+| E         | 1.0      | 1.1          | 1.2      |
+| F         | 2.9      | 3.0          | 3.1      |
+| G         | 0.9      | 1.0          | 1.3      |
+| H         | -        | 0.82         | -        |
+| M         | 0.8      | 0.9          | 1.0      |
+| N         | 0.4      | 0.5          | 0.6      |
+| K         | 0.7      | 0.8          | 0.9      |
+
+
+
+## Reference Design
+
+![K35](/img/hardware/k35/k35_reference_circuit.png)
+
+
+
+## Product Comparison
+
+| Feature                        | K35C                | K35E       |
+| ------------------------------ | ------------------- | ---------- |
+| **Positioning Chip**           | 3335AT              | 3335AT     |
+| **Grade**                      | Industrial          | Industrial |
+| **Type**                       | RTK (Internal Algo) | INS RTK+DR |
+| **UART**                       | ●                   | ●          |
+| **I2C**                        | ●                   | ●          |
+| **Front-end Dual-band LNA**    | ●                   | ●          |
+| **Front-end Dual-band Filter** | ●                   | ●          |
+| **6-axis IMU**                 | -                   | ●          |

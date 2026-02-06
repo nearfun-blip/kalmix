@@ -11,10 +11,36 @@ const config = {
     v4: true,
   },
 
-  // GitHub Pages 配置
+
+themeConfig:
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  ({
+    // 其他配置...
+    
+    // 添加侧边栏配置
+    docs: {
+      sidebar: {
+        // 控制默认展开的层级
+        expanded: {
+          'tutorial': 2,  // 展开到第二级
+          'api': 1,       // 只展开第一级
+        },
+      },
+    },
+    
+    // 其他配置保持不变...
+  }),
+
+  // GitHub Pages 配置 - 请根据实际情况选择下面两种方案之一
+
+  // 方案1：如果仓库名是 kalmix（项目页面）
   url: 'https://nearfun-blip.github.io',
-  baseUrl: '/kalmix/',
+  baseUrl: '/kalmix/', // 注意这里有仓库名
   
+  // 方案2：如果仓库名是 nearfun-blip.github.io（用户页面）
+  // url: 'https://nearfun-blip.github.io',
+  // baseUrl: '/',
+
   organizationName: 'nearfun-blip',
   projectName: 'kalmix',
   deploymentBranch: 'gh-pages',
@@ -35,7 +61,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/nearfun-blip/kalmix/tree/main/',
-        },
+ },
         blog: {
           showReadingTime: true,
           feedOptions: {
@@ -57,8 +83,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // ⚠️ 删除了无效的 docs 配置
-      
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
@@ -131,5 +155,6 @@ const config = {
       },
     }),
 };
+
 
 export default config;

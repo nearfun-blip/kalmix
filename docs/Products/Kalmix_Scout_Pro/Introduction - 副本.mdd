@@ -1,0 +1,90 @@
+---
+sidebar_position: 1
+toc_max_heading_level: 3
+---
+
+# Introduction
+
+**SCOUT PRO GNSS Receiver: **Plug-and-Play RTK & Dead Reckoning (DR) Navigation Module with USB-C
+
+
+
+
+
+```
+:::details[点击查看详情]
+
+这是折叠的内容
+
+- 项目 1
+- 项目 2
+```
+
+
+
+
+
+## Product Overview
+
+In the world of autonomous driving and robotics, knowing your exact location is everything. The **SCOUT PRO** takes the complexity out of high-precision GNSS. By combining a high-gain antenna and a powerful receiver into a compact, industrial-grade **G-Mouse form factor**, we've created the ultimate tool for developers who want to focus on their algorithms, not their wiring.
+
+
+
+## Why Choose SCOUT PRO?
+
+- **Plug-and-Play USB-C Connectivity:** Say goodbye to jumper wires, soldering irons, and fragile headers. The SCOUT PRO features a native USB Type-C interface with a **3-meter cable**, allowing direct connection to your PC, Raspberry Pi, Nvidia Jetson, or industrial controller. It enumerates as a standard serial device, ready for your data stream.
+
+- **Dual-Band L1/L5 Precision:** Powered by the MediaTek **AG3335** chipset, the SCOUT PRO tracks both L1 and L5 frequency bands. This significantly improves signal reception and multipath mitigation in challenging environments compared to single-band legacy receivers.
+
+- **Built for the Elements (IP67):** Robotics don't always operate in a lab. The SCOUT PRO is housed in a fully sealed enclosure rated **IP67 waterproof and dustproof**. With its robust **3M adhesive backing**, you can securely mount it to the roof of a car, a drone, or a mower in seconds.
+
+
+
+## Choose Your Version
+
+### 1. Standard RTK Version
+
+- **Best for:** Open-sky surveying, precision agriculture, and static monitoring stations.
+
+
+
+- **Performance:** Delivers centimeter-level accuracy with a **1Hz update rate**. Ideal for applications where high-speed updates are not critical, but absolute precision is mandatory.
+
+
+
+### 2. RTK + Dead Reckoning (DR) Version
+
+- **Best for:** Urban delivery robots, autonomous driving research, and automated guided vehicles (AGVs).
+
+- **The Problem Solver:** What happens when your robot enters a tunnel, a parking garage, or passes under dense tree cover? Standard GPS stops working.
+
+- **The Solution:** This version integrates an industrial-grade **ST LSM6DSR 6-axis IMU**. By fusing GNSS data with inertial measurements (Sensor Fusion), the SCOUT PRO delivers **continuous, reliable positioning** even when satellite signals are temporarily lost.
+
+- **Performance:** High-dynamic output with a **10Hz update rate**, ensuring smooth tracking for moving platforms.
+
+
+
+## Technical Highlights & Integration
+
+**Output Protocol:** Standard NMEA 0183 (Default Baud Rate: 115200). Compatible with mainstream navigation software.
+
+**Correction Input:** Supports RTCM input for Real-Time Kinematics (RTK) operation.
+
+**Installation:** Industrial-strength 3M VHB adhesive mount for vibration-resistant fixing.
+
+**Development Ready:** We provide a suite of professional configuration and testing tools (downloadable) to help you get started immediately.
+
+
+
+## Target Applications
+
+- **Autonomous Driving Education & Research:** Perfect for university labs and ROS-based projects.
+
+- **Robotic Lawnmowers:** Reliable boundary handling and path planning.
+
+- **Unmanned Delivery Vehicles:** Navigate complex urban environments with the DR version.
+
+- **Precision Agriculture:** Automated steering systems for tractors and harvesters.
+
+- **Low-Speed Logistics:** AGVs and yard tractors.
+-  **Drones & UAVs:** Ground control station positioning.
