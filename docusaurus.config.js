@@ -13,11 +13,11 @@ const config = {
 
   // GitHub Pages 配置
   url: 'https://nearfun-blip.github.io',
-  baseUrl: '/kalmix/',
+  baseUrl: '/',
   
   organizationName: 'nearfun-blip',
   projectName: 'kalmix',
-  deploymentBranch: 'gh-pages',
+  //删除deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -34,7 +34,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/nearfun-blip/kalmix/tree/main/',
+          editUrl: 'https://github.com/nearfun-blip/kalmix/tree/source/',
         },
         blog: {
           showReadingTime: true,
@@ -42,7 +42,7 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/nearfun-blip/kalmix/tree/main/',
+          editUrl: 'https://github.com/nearfun-blip/kalmix/tree/source/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
