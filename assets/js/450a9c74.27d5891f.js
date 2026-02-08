@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkiotars_docs=globalThis.webpackChunkiotars_docs||[]).push([[8706],{7225(a){a.exports=JSON.parse('{"metadata":{"permalink":"/kalmix/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

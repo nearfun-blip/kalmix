@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkiotars_docs=globalThis.webpackChunkiotars_docs||[]).push([[1903],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/kalmix/blog","blogTitle":"Blog","authorsListPath":"/kalmix/blog/authors"}')}}]);
